@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projetos · Leonardo Culler</title>
+<meta name="description" content="Portfólio de Leonardo Culler, desenvolvedor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="index.html">leonardo culler</a>
+    <nav aria-label="Páginas">
+      <a href="index.html">início</a>
+      <a href="experiencia.html">experiência</a>
+      <a href="projetos.html" aria-current="page">projetos</a>
+      <a href="habilidades.html">habilidades</a>
+    </nav>
+  </header>
+
+  <section id="projetos">
+    <div class="page-head">
+      <span class="label">Projetos em destaque</span>
+      <h1>O que eu construí</h1>
+      <p>Dois sistemas grandes, com banco de dados, tempo real e regras de negócio de verdade. Abaixo deles, os projetos menores que estão no meu GitHub.</p>
+    </div>
+
+    <article class="feature">
+      <div class="main">
+        <div class="meta"><span class="tag live">TCC</span><span class="tag">Em equipe</span><span class="tag">2026</span></div>
+        <h3>PDV Restaurante</h3>
+        <p>Sistema de ponto de venda que cobre o restaurante inteiro: salão com mapa de mesas, balcão, delivery, cozinha (KDS) em tempo real, caixa com sangria e fechamento, estoque com ficha técnica e baixa automática.</p>
+        <p>O diferencial é a logística: as entregas são roteirizadas sobre a malha viária real do OpenStreetMap, agrupadas e distribuídas entre os motoboys, que recebem as paradas em um app PWA com navegação por voz. Um robô de WhatsApp com IA monta o pedido com os preços do PDV, e a tela de Inteligência transforma o histórico em curva ABC, mapa de calor e efeito do clima nas vendas.</p>
+        <div class="links"><a href="https://github.com/stefanomrtt/pdv-restaurante" target="_blank" rel="noopener">Repositório ↗</a></div>
+      </div>
+      <div class="side">
+        <ul class="spec">
+          <li><b>Roteirização</b><span>Dijkstra na malha viária, Clarke &amp; Wright para agrupar entregas, algoritmo húngaro para escolher o motoboy</span></li>
+          <li><b>Tempo real</b><span>WebSocket para cozinha, delivery e mapa ao vivo dos motoboys</span></li>
+          <li><b>Integrações</b><span>Webhook para WhatsApp e apps de delivery (iFood, Rappi); planilhas no Google Drive para o Gemini Notebook</span></li>
+          <li><b>Qualidade</b><span>Migrations versionadas, testes com node:test e smoke tests, multiloja</span></li>
+        </ul>
+        <div class="stack"><span>Node.js</span><span>Express</span><span>MySQL</span><span>WebSocket</span><span>Claude API</span><span>PWA</span><span>Docker</span><span>JWT</span></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="main">
+        <div class="meta"><span class="tag live">Em desenvolvimento</span><span class="tag">Pessoal</span><span class="tag">2026</span></div>
+        <h3>TorreMMO</h3>
+        <p>MMORPG 2D isométrico com permadeath, economia controlada pelos jogadores e uma dungeon vertical. Servidor autoritativo em Node + TypeScript e cliente em Godot 4.</p>
+        <p>A fundação já tem contas com senha em argon2id, um personagem vivo por conta, sessão única (o segundo login derruba o primeiro), posição persistida e um loop de jogo a 20 Hz sobre WebSocket, com predição no cliente, reconciliação, interpolação e reconexão.</p>
+        <div class="links"><span class="label">Repositório privado</span></div>
+      </div>
+      <div class="side">
+        <ul class="spec">
+          <li><b>Rede</b><span>Tick de 20 Hz, predição e reconciliação no cliente, limites de conexão e rate limit por IP</span></li>
+          <li><b>Dados</b><span>PostgreSQL com migrations, Redis para sessões e presença, Kysely tipado</span></li>
+          <li><b>Contrato</b><span>Mensagens validadas com zod e protocolo HTTP + WS documentado para o Godot</span></li>
+          <li><b>Testes</b><span>Vitest com unitários e integração em banco isolado</span></li>
+        </ul>
+        <div class="stack"><span>TypeScript</span><span>Fastify</span><span>PostgreSQL</span><span>Redis</span><span>Godot 4</span><span>GDScript</span><span>Docker</span><span>Vitest</span></div>
+      </div>
+    </article>
+
+    <div class="sec-head" style="margin-top: 56px;">
+      <span class="label">Mais no GitHub</span>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="label">JavaScript · 2026</span>
+        <h3>Ultimate Club Draft</h3>
+        <p>Jogo de draft de futebol no navegador: cara ou coroa, escolha em formato snake por pacotes de 4 cartas, 30 segundos por escolha e simulação de qual elenco vence. HTML e JS puros.</p>
+        <div class="foot"><span>HTML · CSS · JS</span><a href="https://github.com/LeoCuller/Snake-Draft" target="_blank" rel="noopener">Snake-Draft ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">TypeScript · 2026</span>
+        <h3>Bot de apostas Pokémon</h3>
+        <p>Bot de Telegram que sorteia dois times pela PokéAPI, envia a batalha e deixa o usuário apostar no vencedor com botões inline.</p>
+        <div class="foot"><span>grammY · axios</span><a href="https://github.com/LeoCuller/BotPokemon" target="_blank" rel="noopener">BotPokemon ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">C# + TypeScript · 2026</span>
+        <h3>Desafio Hypesoft</h3>
+        <p>Desafio técnico full-stack: API de produtos em .NET com Swagger, front-end em React com Vite e MongoDB no Docker.</p>
+        <div class="foot"><span>.NET · React · Mongo</span><a href="https://github.com/LeoCuller/Desafio1" target="_blank" rel="noopener">Desafio1 ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">Python · USCS · 2025</span>
+        <h3>Agente LLM</h3>
+        <p>Protótipo de agente de linguagem com GPT-2 via HuggingFace Transformers, feito em notebook para a disciplina de Inteligência Artificial e Computacional.</p>
+        <div class="foot"><span>Transformers · PyTorch</span><a href="https://github.com/LeoCuller/ATT-Faculdade" target="_blank" rel="noopener">ATT-Faculdade ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">Node.js · USCS · 2025</span>
+        <h3>Elevador IoT</h3>
+        <p>Simulação de sensores de presença e obstrução que decidem quando a porta do elevador fecha, com leitura a cada 2 segundos entre interface e servidor.</p>
+        <div class="foot"><span>Node · HTML · CSS</span><a href="https://github.com/LeoCuller/Elevador-IOT" target="_blank" rel="noopener">Elevador-IOT ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">HTML · 2023</span>
+        <h3>Projeto Horizontes</h3>
+        <p>Site acadêmico pensado para apoiar a ONG Projeto Horizontes no futuro.</p>
+        <div class="foot"><span>HTML · CSS</span><a href="https://github.com/LeoCuller/Projeto-Horizontes" target="_blank" rel="noopener">Projeto-Horizontes ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">JavaScript · 2023</span>
+        <h3>Pokédex</h3>
+        <p>Pokédex no navegador consumindo dados de Pokémon, feita com HTML, CSS e JavaScript.</p>
+        <div class="foot"><span>HTML · CSS · JS</span><a href="https://github.com/LeoCuller/Pokedex" target="_blank" rel="noopener">Pokedex ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">Python · Java · C# · 2022–2025</span>
+        <h3>Calculadoras</h3>
+        <p>Os primeiros exercícios, a mesma ideia em três linguagens: funções e laços em Python, console em Java e C#.</p>
+        <div class="foot"><span>Fundamentos</span><a href="https://github.com/LeoCuller?tab=repositories&amp;q=calculadora" target="_blank" rel="noopener">Ver os 4 ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="label">Perfil</span>
+        <h3>Todos os repositórios</h3>
+        <p>12 repositórios públicos, de 2022 até hoje.</p>
+        <div class="foot"><span>GitHub</span><a href="https://github.com/LeoCuller?tab=repositories" target="_blank" rel="noopener">LeoCuller ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next" aria-label="Próxima página">
+    <span class="label">Próxima página</span>
+    <a href="habilidades.html">Habilidades →</a>
+  </nav>
+  <div class="foot-contact">
+    <span>leou2308@gmail.com</span>
+    <a href="https://www.linkedin.com/in/leonardo-moraes-culler-07a629" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://github.com/LeoCuller" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <footer>Leonardo Culler · 2026</footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

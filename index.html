@@ -3,170 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>
-:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-body { margin: 0; }
-img { max-width: 100%; }
-[hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
-</style>
 <title>Leonardo Culler</title>
-<meta name="description" content="Portfólio de Leonardo Culler, desenvolvedor full-stack.">
+<meta name="description" content="Portfólio de Leonardo Culler, desenvolvedor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: uma coluna editorial; o hero é um mapa de rotas (o grafo do PDV) com o nome por cima;
-   projetos em destaque como "fichas técnicas" largas, o resto em grade compacta. */
-:root {
-  --bg: #F1F3F1;
-  --surface: #FFFFFF;
-  --ink: #14191D;
-  --muted: #5A646B;
-  --line: #D5DAD8;
-  --accent: #0C6A86;
-  --route: #D9901A;
-  --chip: #E3E9E8;
-  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0E1316; --surface: #151C20; --ink: #E5EAEC; --muted: #93A0A7;
-    --line: #26323A; --accent: #5BB8D4; --route: #E8A93E; --chip: #1C262C;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0E1316; --surface: #151C20; --ink: #E5EAEC; --muted: #93A0A7;
-  --line: #26323A; --accent: #5BB8D4; --route: #E8A93E; --chip: #1C262C;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-body {
-  background: var(--bg); color: var(--ink);
-  font: 400 16px/1.6 var(--body);
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-a { color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-.wrap { max-width: 1040px; margin: 0 auto; }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.05; }
-.label { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-
-/* topo */
-.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
-.top nav { display: flex; gap: 18px; flex-wrap: wrap; font: 500 13px/1 var(--mono); }
-.top nav a { color: var(--muted); text-decoration: none; }
-.top nav a:hover { color: var(--ink); }
-.mark { font: 700 15px/1 var(--display); letter-spacing: -.01em; }
-
-/* hero */
-.hero { position: relative; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
-.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.hero-text { position: relative; padding: clamp(28px, 6vw, 64px); display: grid; gap: 18px; max-width: 700px; }
-.hero h1 { font-size: clamp(44px, 9vw, 96px); font-weight: 800; letter-spacing: -.035em; }
-.hero h1 span { color: var(--accent); }
-.hero p { margin: 0; font-size: clamp(17px, 2.1vw, 20px); color: var(--muted); max-width: 52ch; }
-.hero p strong { color: var(--ink); font-weight: 600; }
-.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 4px; font: 500 14px/1 var(--mono); text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: var(--surface); }
-.btn.primary { background: var(--ink); color: var(--bg); }
-.btn:hover { border-color: var(--accent); }
-.legend { position: relative; display: flex; gap: 18px; flex-wrap: wrap; padding: 0 clamp(28px, 6vw, 64px) 22px; font: 400 12px/1.4 var(--mono); color: var(--muted); }
-.legend i { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 6px; background: var(--route); }
-.legend i.n { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-
-section { padding-block: clamp(48px, 8vw, 88px) 0; }
-.sec-head { display: grid; gap: 8px; margin-bottom: 28px; }
-.sec-head h2 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -.02em; }
-.sec-head p { margin: 0; color: var(--muted); max-width: 62ch; }
-
-/* projetos em destaque */
-.feature { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
-.feature + .feature { margin-top: 20px; }
-.feature .main { padding: clamp(22px, 4vw, 36px); display: grid; gap: 14px; align-content: start; min-width: 0; }
-.feature .side { padding: clamp(22px, 4vw, 36px); border-left: 1px solid var(--line); display: grid; gap: 18px; align-content: start; min-width: 0; }
-.feature h3 { font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; letter-spacing: -.02em; }
-.feature p { margin: 0; }
-.meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.tag { font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 3px; background: var(--chip); color: var(--muted); }
-.tag.live { background: var(--accent); color: var(--surface); }
-.spec { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.spec li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; font-size: 14px; border-top: 1px dashed var(--line); padding-top: 10px; }
-.spec li:first-child { border-top: 0; padding-top: 0; }
-.spec b { font: 500 12px/1.6 var(--mono); color: var(--muted); font-weight: 500; }
-.stack { display: flex; flex-wrap: wrap; gap: 6px; }
-.stack span { font: 400 12px/1 var(--mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 3px; }
-.links { display: flex; gap: 16px; flex-wrap: wrap; font: 500 13px/1.4 var(--mono); }
-
-/* outros projetos */
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.card { background: var(--surface); padding: 22px; display: grid; gap: 10px; grid-template-rows: auto auto 1fr auto; min-width: 0; }
-.card h3 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
-.card p { margin: 0; font-size: 14.5px; color: var(--muted); }
-.card .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 400 12px/1.4 var(--mono); color: var(--muted); padding-top: 8px; }
-.card .foot a { font-weight: 500; }
-
-/* habilidades */
-.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
-.skill { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-top: 1px solid var(--line); }
-.skill h3 { font: 600 15px/1.4 var(--body); }
-.skill .stack span { background: var(--surface); }
-
-/* trajetória */
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.timeline li { display: grid; grid-template-columns: 90px 18px minmax(0, 1fr); gap: 16px; }
-.timeline .yr { font: 700 22px/1.2 var(--display); font-variant-numeric: tabular-nums; padding-top: 2px; }
-.timeline .dot { position: relative; }
-.timeline .dot::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--line); }
-.timeline .dot::after { content: ""; position: absolute; left: 3px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
-.timeline li:last-child .dot::before { bottom: auto; height: 16px; }
-.timeline .what { padding-bottom: 28px; }
-.timeline .what h3 { font: 600 17px/1.4 var(--body); }
-.timeline .what p { margin: 4px 0 0; color: var(--muted); font-size: 15px; max-width: 64ch; }
-.timeline .what .when { display: block; font: 400 12.5px/1.5 var(--mono); color: var(--muted); }
-.timeline .what .stack { margin-top: 12px; }
-.contact .email { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font: 500 clamp(17px, 2.4vw, 22px)/1.3 var(--mono); }
-.contact .email span { user-select: all; overflow-wrap: anywhere; }
-.contact .email button { font: 500 12px/1 var(--mono); padding: 8px 10px; border-radius: 4px; border: 1px solid var(--bg); background: transparent; color: var(--bg); cursor: pointer; }
-
-/* contato */
-.contact { margin-block: clamp(48px, 8vw, 88px) 40px; border-radius: 6px; background: var(--ink); color: var(--bg); padding: clamp(28px, 6vw, 56px); display: grid; gap: 16px; }
-.contact h2 { font-size: clamp(30px, 5vw, 48px); font-weight: 800; letter-spacing: -.03em; }
-.contact p { margin: 0; max-width: 56ch; opacity: .8; }
-.contact .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); }
-footer { padding-block: 0 32px; font: 400 12px/1.5 var(--mono); color: var(--muted); }
-
-@media (max-width: 820px) {
-  .feature { grid-template-columns: minmax(0, 1fr); }
-  .feature .side { border-left: 0; border-top: 1px solid var(--line); }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .skills { grid-template-columns: minmax(0, 1fr); }
-}
-@media (max-width: 560px) {
-  .grid { grid-template-columns: minmax(0, 1fr); }
-  .skill, .spec li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .timeline li { grid-template-columns: 56px 18px minmax(0, 1fr); gap: 10px; }
-  .timeline .yr { font-size: 18px; }
-  .top nav { gap: 14px; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="wrap">
   <header class="top">
-    <div class="mark">leonardo culler</div>
-    <nav aria-label="Seções">
-      <a href="#experiencia">experiência</a>
-      <a href="#projetos">projetos</a>
-      <a href="#habilidades">habilidades</a>
-      <a href="#formacao">formação</a>
-      <a href="#contato">contato</a>
+    <a class="mark" href="index.html">leonardo culler</a>
+    <nav aria-label="Páginas">
+      <a href="index.html" aria-current="page">início</a>
+      <a href="experiencia.html">experiência</a>
+      <a href="projetos.html">projetos</a>
+      <a href="habilidades.html">habilidades</a>
     </nav>
   </header>
 
@@ -184,168 +36,27 @@ footer { padding-block: 0 32px; font: 400 12px/1.5 var(--mono); color: var(--mut
     <div class="legend"><span><i class="n"></i>pedido</span><span><i></i>rota calculada (Dijkstra), como no PDV</span></div>
   </div>
 
-  <section id="experiencia">
-    <div class="sec-head">
-      <span class="label">Experiência</span>
-      <h2>Onde eu trabalhei</h2>
+  <section class="home-tiles" aria-label="Seções do portfólio">
+    <div class="tiles">
+      <a class="tile" href="experiencia.html">
+        <span class="label">Experiência</span>
+        <h2>Capgemini e Simpar</h2>
+        <p>Dev júnior nos projetos do Pix do Bradesco e da Ágora Investimentos. Hoje, Field Service PL na Simpar. Formação em Ciência da Computação na USCS.</p>
+        <span class="go">Ver experiência →</span>
+      </a>
+      <a class="tile" href="projetos.html">
+        <span class="label">Projetos</span>
+        <h2>PDV, MMO e mais 9</h2>
+        <p>PDV de restaurante com delivery roteirizado, servidor de MMORPG em TypeScript e Godot, bots, agente LLM e projetos da faculdade.</p>
+        <span class="go">Ver projetos →</span>
+      </a>
+      <a class="tile" href="habilidades.html">
+        <span class="label">Habilidades</span>
+        <h2>Do back-end à IA</h2>
+        <p>Java, C#, TypeScript e Python, Node.js e .NET, MySQL, PostgreSQL e Redis, arquitetura hexagonal e agentes de IA.</p>
+        <span class="go">Ver habilidades →</span>
+      </a>
     </div>
-    <ol class="timeline">
-      <li><span class="yr">2026</span><span class="dot"></span><div class="what">
-        <h3>Simpar · Field Service PL</h3>
-        <span class="when">out 2026 – atual · São Paulo, SP</span>
-        <p>Atendimento técnico em campo, depois de começar na empresa como Service Desk Jr (mai 2026 – out 2026, Mogi das Cruzes).</p>
-      </div></li>
-      <li><span class="yr">2024</span><span class="dot"></span><div class="what">
-        <h3>Capgemini · Desenvolvedor Jr (Analista de Soluções)</h3>
-        <span class="when">fev 2024 – jun 2025 · 1 ano e 5 meses · São Paulo, SP</span>
-        <p>Desenvolvimento em projetos do Pix do Bradesco e da Ágora Investimentos, com foco em automação e arquitetura hexagonal.</p>
-        <div class="stack"><span>Java</span><span>C#</span><span>Arquitetura hexagonal</span><span>Automação</span><span>Pix</span><span>Mercado financeiro</span></div>
-      </div></li>
-    </ol>
-  </section>
-
-  <section id="projetos">
-    <div class="sec-head">
-      <span class="label">Projetos em destaque</span>
-      <h2>O que eu construí</h2>
-      <p>Dois sistemas grandes, com banco de dados, tempo real e regras de negócio de verdade. Abaixo deles, os projetos menores que estão no meu GitHub.</p>
-    </div>
-
-    <article class="feature">
-      <div class="main">
-        <div class="meta"><span class="tag live">TCC</span><span class="tag">Em equipe</span><span class="tag">2026</span></div>
-        <h3>PDV Restaurante</h3>
-        <p>Sistema de ponto de venda que cobre o restaurante inteiro: salão com mapa de mesas, balcão, delivery, cozinha (KDS) em tempo real, caixa com sangria e fechamento, estoque com ficha técnica e baixa automática.</p>
-        <p>O diferencial é a logística: as entregas são roteirizadas sobre a malha viária real do OpenStreetMap, agrupadas e distribuídas entre os motoboys, que recebem as paradas em um app PWA com navegação por voz. Um robô de WhatsApp com IA monta o pedido com os preços do PDV, e a tela de Inteligência transforma o histórico em curva ABC, mapa de calor e efeito do clima nas vendas.</p>
-        <div class="links"><a href="https://github.com/stefanomrtt/pdv-restaurante" target="_blank" rel="noopener">Repositório ↗</a></div>
-      </div>
-      <div class="side">
-        <ul class="spec">
-          <li><b>Roteirização</b><span>Dijkstra na malha viária, Clarke &amp; Wright para agrupar entregas, algoritmo húngaro para escolher o motoboy</span></li>
-          <li><b>Tempo real</b><span>WebSocket para cozinha, delivery e mapa ao vivo dos motoboys</span></li>
-          <li><b>Integrações</b><span>Webhook para WhatsApp e apps de delivery (iFood, Rappi); planilhas no Google Drive para o Gemini Notebook</span></li>
-          <li><b>Qualidade</b><span>Migrations versionadas, testes com node:test e smoke tests, multiloja</span></li>
-        </ul>
-        <div class="stack"><span>Node.js</span><span>Express</span><span>MySQL</span><span>WebSocket</span><span>Claude API</span><span>PWA</span><span>Docker</span><span>JWT</span></div>
-      </div>
-    </article>
-
-    <article class="feature">
-      <div class="main">
-        <div class="meta"><span class="tag live">Em desenvolvimento</span><span class="tag">Pessoal</span><span class="tag">2026</span></div>
-        <h3>TorreMMO</h3>
-        <p>MMORPG 2D isométrico com permadeath, economia controlada pelos jogadores e uma dungeon vertical. Servidor autoritativo em Node + TypeScript e cliente em Godot 4.</p>
-        <p>A fundação já tem contas com senha em argon2id, um personagem vivo por conta, sessão única (o segundo login derruba o primeiro), posição persistida e um loop de jogo a 20 Hz sobre WebSocket, com predição no cliente, reconciliação, interpolação e reconexão.</p>
-        <div class="links"><span class="label">Repositório privado</span></div>
-      </div>
-      <div class="side">
-        <ul class="spec">
-          <li><b>Rede</b><span>Tick de 20 Hz, predição e reconciliação no cliente, limites de conexão e rate limit por IP</span></li>
-          <li><b>Dados</b><span>PostgreSQL com migrations, Redis para sessões e presença, Kysely tipado</span></li>
-          <li><b>Contrato</b><span>Mensagens validadas com zod e protocolo HTTP + WS documentado para o Godot</span></li>
-          <li><b>Testes</b><span>Vitest com unitários e integração em banco isolado</span></li>
-        </ul>
-        <div class="stack"><span>TypeScript</span><span>Fastify</span><span>PostgreSQL</span><span>Redis</span><span>Godot 4</span><span>GDScript</span><span>Docker</span><span>Vitest</span></div>
-      </div>
-    </article>
-
-    <div class="sec-head" style="margin-top: 56px;">
-      <span class="label">Mais no GitHub</span>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <span class="label">JavaScript · 2026</span>
-        <h3>Ultimate Club Draft</h3>
-        <p>Jogo de draft de futebol no navegador: cara ou coroa, escolha em formato snake por pacotes de 4 cartas, 30 segundos por escolha e simulação de qual elenco vence. HTML e JS puros.</p>
-        <div class="foot"><span>HTML · CSS · JS</span><a href="https://github.com/LeoCuller/Snake-Draft" target="_blank" rel="noopener">Snake-Draft ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">TypeScript · 2026</span>
-        <h3>Bot de apostas Pokémon</h3>
-        <p>Bot de Telegram que sorteia dois times pela PokéAPI, envia a batalha e deixa o usuário apostar no vencedor com botões inline.</p>
-        <div class="foot"><span>grammY · axios</span><a href="https://github.com/LeoCuller/BotPokemon" target="_blank" rel="noopener">BotPokemon ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">C# + TypeScript · 2026</span>
-        <h3>Desafio Hypesoft</h3>
-        <p>Desafio técnico full-stack: API de produtos em .NET com Swagger, front-end em React com Vite e MongoDB no Docker.</p>
-        <div class="foot"><span>.NET · React · Mongo</span><a href="https://github.com/LeoCuller/Desafio1" target="_blank" rel="noopener">Desafio1 ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">Python · USCS · 2025</span>
-        <h3>Agente LLM</h3>
-        <p>Protótipo de agente de linguagem com GPT-2 via HuggingFace Transformers, feito em notebook para a disciplina de Inteligência Artificial e Computacional.</p>
-        <div class="foot"><span>Transformers · PyTorch</span><a href="https://github.com/LeoCuller/ATT-Faculdade" target="_blank" rel="noopener">ATT-Faculdade ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">Node.js · USCS · 2025</span>
-        <h3>Elevador IoT</h3>
-        <p>Simulação de sensores de presença e obstrução que decidem quando a porta do elevador fecha, com leitura a cada 2 segundos entre interface e servidor.</p>
-        <div class="foot"><span>Node · HTML · CSS</span><a href="https://github.com/LeoCuller/Elevador-IOT" target="_blank" rel="noopener">Elevador-IOT ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">HTML · 2023</span>
-        <h3>Projeto Horizontes</h3>
-        <p>Site acadêmico pensado para apoiar a ONG Projeto Horizontes no futuro.</p>
-        <div class="foot"><span>HTML · CSS</span><a href="https://github.com/LeoCuller/Projeto-Horizontes" target="_blank" rel="noopener">Projeto-Horizontes ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">JavaScript · 2023</span>
-        <h3>Pokédex</h3>
-        <p>Pokédex no navegador consumindo dados de Pokémon, feita com HTML, CSS e JavaScript.</p>
-        <div class="foot"><span>HTML · CSS · JS</span><a href="https://github.com/LeoCuller/Pokedex" target="_blank" rel="noopener">Pokedex ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">Python · Java · C# · 2022–2025</span>
-        <h3>Calculadoras</h3>
-        <p>Os primeiros exercícios, a mesma ideia em três linguagens: funções e laços em Python, console em Java e C#.</p>
-        <div class="foot"><span>Fundamentos</span><a href="https://github.com/LeoCuller?tab=repositories&amp;q=calculadora" target="_blank" rel="noopener">Ver os 4 ↗</a></div>
-      </div>
-      <div class="card">
-        <span class="label">Perfil</span>
-        <h3>Todos os repositórios</h3>
-        <p>12 repositórios públicos, de 2022 até hoje.</p>
-        <div class="foot"><span>GitHub</span><a href="https://github.com/LeoCuller?tab=repositories" target="_blank" rel="noopener">LeoCuller ↗</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="habilidades">
-    <div class="sec-head">
-      <span class="label">Habilidades</span>
-      <h2>Com o que eu trabalho</h2>
-    </div>
-    <div class="skills">
-      <div class="skill"><h3>Linguagens</h3><div class="stack"><span>JavaScript</span><span>TypeScript</span><span>C#</span><span>Python</span><span>Java</span><span>GDScript</span><span>HTML/CSS</span><span>SQL</span></div></div>
-      <div class="skill"><h3>Arquitetura</h3><div class="stack"><span>Arquitetura hexagonal</span><span>Automação de processos</span><span>Sistemas financeiros</span></div></div>
-      <div class="skill"><h3>Back-end</h3><div class="stack"><span>Node.js</span><span>Express</span><span>Fastify</span><span>.NET Web API</span><span>WebSocket</span><span>JWT</span><span>REST</span></div></div>
-      <div class="skill"><h3>Bancos de dados</h3><div class="stack"><span>MySQL</span><span>PostgreSQL</span><span>Redis</span><span>MongoDB</span><span>Migrations</span><span>Kysely</span></div></div>
-      <div class="skill"><h3>Front-end</h3><div class="stack"><span>React</span><span>Vite</span><span>JS sem framework</span><span>PWA</span></div></div>
-      <div class="skill"><h3>IA</h3><div class="stack"><span>Claude API</span><span>HuggingFace</span><span>Gemini</span><span>Agentes LLM</span><span>Bots</span></div></div>
-      <div class="skill"><h3>Algoritmos</h3><div class="stack"><span>Dijkstra</span><span>Clarke &amp; Wright</span><span>Húngaro</span><span>Curva ABC</span></div></div>
-      <div class="skill"><h3>Jogos</h3><div class="stack"><span>Godot 4</span><span>Netcode autoritativo</span><span>Predição/reconciliação</span></div></div>
-      <div class="skill"><h3>Ferramentas</h3><div class="stack"><span>Git</span><span>Docker</span><span>Vitest</span><span>node:test</span><span>Swagger</span><span>Jupyter</span></div></div>
-    </div>
-  </section>
-
-  <section id="formacao">
-    <div class="sec-head">
-      <span class="label">Formação</span>
-      <h2>Ciência da Computação</h2>
-      <p>Estudo com foco em desenvolvimento de software, arquitetura de sistemas e inteligência artificial. Hoje estou aprofundando em agentes inteligentes e automação.</p>
-    </div>
-    <ol class="timeline">
-      <li><span class="yr">2026</span><span class="dot"></span><div class="what">
-        <h3>USCS · Bacharelado em Ciência da Computação</h3>
-        <span class="when">Universidade Municipal de São Caetano do Sul · conclusão em dez 2026</span>
-        <p>TCC com o PDV Restaurante. Na faculdade também fiz o agente LLM com HuggingFace e a simulação IoT do elevador.</p>
-      </div></li>
-      <li><span class="yr">2022</span><span class="dot"></span><div class="what">
-        <h3>Instituto Mauá de Tecnologia · Computer Science</h3>
-        <span class="when">Início do bacharelado em 2022</span>
-        <p>Primeiros passos em programação com Python, Java e desenvolvimento web.</p>
-      </div></li>
-    </ol>
   </section>
 
   <div class="contact" id="contato">
@@ -360,95 +71,6 @@ footer { padding-block: 0 32px; font: 400 12px/1.5 var(--mono); color: var(--mut
   </div>
   <footer>Leonardo Culler · 2026</footer>
 </div>
-
-<script>
-document.getElementById('copy').addEventListener('click', function () {
-  const btn = this, txt = document.getElementById('email').textContent;
-  const done = () => { btn.textContent = 'Copiado'; setTimeout(() => btn.textContent = 'Copiar e-mail', 1600); };
-  const pick = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selecionado, use Ctrl+C'; };
-  try { navigator.clipboard.writeText(txt).then(done, pick); } catch (e) { pick(); }
-});
-</script>
-<script>
-// Mapa de rotas do hero: um grafo de ruas com pedidos; um caminho mais curto (Dijkstra) é desenhado entre dois pedidos.
-(function () {
-  const cv = document.getElementById('map');
-  const ctx = cv.getContext('2d');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let nodes = [], edges = [], adj = [], path = [], t = 0, raf = 0, w = 0, h = 0;
-  let seed = 7;
-  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-
-  function build() {
-    const r = cv.getBoundingClientRect(); w = r.width; h = r.height;
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    seed = 7; nodes = []; edges = [];
-    const step = 70, cols = Math.ceil(w / step) + 1, rows = Math.ceil(h / step) + 1;
-    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++)
-      nodes.push({ x: x * step + (rnd() - .5) * 34, y: y * step + (rnd() - .5) * 34 });
-    adj = nodes.map(() => []);
-    const add = (a, b) => { const d = Math.hypot(nodes[a].x - nodes[b].x, nodes[a].y - nodes[b].y); edges.push([a, b]); adj[a].push([b, d]); adj[b].push([a, d]); };
-    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
-      const i = y * cols + x;
-      if (x < cols - 1 && rnd() > .12) add(i, i + 1);
-      if (y < rows - 1 && rnd() > .12) add(i, i + cols);
-      if (x < cols - 1 && y < rows - 1 && rnd() > .82) add(i, i + cols + 1);
-    }
-    // origem perto do canto direito superior, destino no canto direito inferior (o texto fica à esquerda)
-    const near = (px, py) => nodes.reduce((b, n, i) => Math.hypot(n.x - px, n.y - py) < Math.hypot(nodes[b].x - px, nodes[b].y - py) ? i : b, 0);
-    path = dijkstra(near(w * .62, h * .18), near(w * .92, h * .85));
-  }
-
-  function dijkstra(s, g) {
-    const dist = nodes.map(() => Infinity), prev = nodes.map(() => -1), done = new Set();
-    dist[s] = 0;
-    while (true) {
-      let u = -1;
-      for (let i = 0; i < nodes.length; i++) if (!done.has(i) && (u < 0 || dist[i] < dist[u])) u = i;
-      if (u < 0 || dist[u] === Infinity || u === g) break;
-      done.add(u);
-      for (const [v, d] of adj[u]) if (dist[u] + d < dist[v]) { dist[v] = dist[u] + d; prev[v] = u; }
-    }
-    const p = []; for (let v = g; v >= 0; v = prev[v]) p.unshift(v);
-    return p[0] === s ? p : [];
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.globalAlpha = .55; ctx.strokeStyle = css('--line'); ctx.lineWidth = 1;
-    ctx.beginPath(); for (const [a, b] of edges) { ctx.moveTo(nodes[a].x, nodes[a].y); ctx.lineTo(nodes[b].x, nodes[b].y); } ctx.stroke();
-    ctx.globalAlpha = 1;
-    // rota percorrida até t (0..1)
-    const segs = path.length - 1, k = Math.max(0, Math.min(1, t)) * segs;
-    ctx.strokeStyle = css('--route'); ctx.lineWidth = 3; ctx.lineJoin = ctx.lineCap = 'round';
-    ctx.beginPath();
-    for (let i = 0; i <= Math.floor(k) && i < path.length; i++) { const n = nodes[path[i]]; i ? ctx.lineTo(n.x, n.y) : ctx.moveTo(n.x, n.y); }
-    let head = path.length ? nodes[path[0]] : null;
-    if (k < segs && path.length > 1) {
-      const a = nodes[path[Math.floor(k)]], b = nodes[path[Math.floor(k) + 1]], f = k - Math.floor(k);
-      head = { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f }; ctx.lineTo(head.x, head.y);
-    } else if (path.length) head = nodes[path[path.length - 1]];
-    ctx.stroke();
-    // pedidos (origem e destino) e o motoboy
-    ctx.fillStyle = css('--accent');
-    for (const i of [path[0], path[path.length - 1]]) if (i !== undefined) { ctx.beginPath(); ctx.arc(nodes[i].x, nodes[i].y, 6, 0, 7); ctx.fill(); }
-    if (head) { ctx.fillStyle = css('--surface'); ctx.strokeStyle = css('--route'); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(head.x, head.y, 5, 0, 7); ctx.fill(); ctx.stroke(); }
-  }
-
-  function loop() {
-    t += 0.004; if (t > 1.35) t = 0;
-    draw(); raf = requestAnimationFrame(loop);
-  }
-  function start() {
-    cancelAnimationFrame(raf); build();
-    if (reduce) { t = 1; draw(); } else { t = 1; draw(); t = 0; raf = requestAnimationFrame(loop); }
-  }
-  start();
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 150); });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
-})();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
